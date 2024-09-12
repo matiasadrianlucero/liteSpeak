@@ -1,10 +1,13 @@
 import './style.css';
-import { checkIfLogged } from './landing/checkIfLogged';
-import { landingUI } from './landing/landingUI';
-function index(){
-    let result=checkIfLogged()
-    if(result){
 
+import { landingUI } from './landing/landingUI';
+import { login } from './landing/login/login';
+import { loggedInUI } from './loggedIn/loggedInUI';
+function index(){
+    let result=login()
+    if(result){
+        loggedInUI()
+        console.log(localStorage.getItem("email"),localStorage.getItem("username"))
     } else {
         landingUI()
     }

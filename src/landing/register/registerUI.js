@@ -13,11 +13,11 @@ function registerUI(){
     landingInputEmail.required=true
     landingInputEmail.type = "email";
     landingInputEmail.placeholder = "Email";
-
     
-    landingInputEmail.onchange=function(){
-        checkValidityFunction([landingInputUsername,landingInputConfirmPassword],landingInputEmail,landingInputEnter)
-    }
+    landingInputEmail.addEventListener('blur', function() {
+        checkValidityFunction([landingInputUsername,landingInputConfirmPassword],landingInputEnter)
+      });
+
 
     let landingInputUsername=document.createElement("input")
     landingInputUsername.id="landingInputUsername"
@@ -25,8 +25,12 @@ function registerUI(){
     landingInputUsername.type="text"
     landingInputUsername.placeholder="Username"
     landingInputUsername.onchange=function(){
-        checkValidityFunction([landingInputUsername,landingInputConfirmPassword],landingInputEmail,landingInputEnter)
+        checkValidityFunction([landingInputUsername,landingInputConfirmPassword],landingInputEnter)
     }
+
+    landingInputUsername.addEventListener('blur', function() {
+        checkValidityFunction([landingInputUsername,landingInputConfirmPassword],landingInputEnter)
+    });
 
 
     let landingInputPassword=document.createElement("input")
@@ -34,25 +38,30 @@ function registerUI(){
     landingInputPassword.required=true
     landingInputPassword.type="password"
     landingInputPassword.placeholder="Password"
-    landingInputPassword.onchange=function(){checkPassword("landingInputPassword","landingInputConfirmPassword"),checkValidityFunction([landingInputUsername,landingInputConfirmPassword],landingInputEmail,landingInputEnter)}
+
+    landingInputPassword.onchange=function() {
+        checkPassword("landingInputPassword","landingInputConfirmPassword"),checkValidityFunction([landingInputUsername,landingInputConfirmPassword],landingInputEnter)
+    };
 
     let landingInputConfirmPassword=document.createElement("input")
     landingInputConfirmPassword.id="landingInputConfirmPassword"
     landingInputConfirmPassword.required=true
     landingInputConfirmPassword.type="password"
     landingInputConfirmPassword.placeholder="Verify Password"
-    landingInputConfirmPassword.onchange=function(){checkPassword("landingInputPassword","landingInputConfirmPassword"),checkValidityFunction([landingInputUsername,landingInputConfirmPassword],landingInputEmail,landingInputEnter)}
 
+    landingInputConfirmPassword.onchange=function() {
+        checkPassword("landingInputPassword","landingInputConfirmPassword"),checkValidityFunction([landingInputUsername,landingInputConfirmPassword],landingInputEnter)
+    };
 
     let landingInputEnter=document.createElement("button")
     landingInputEnter.id="landingInputEnter"
     landingInputEnter.innerHTML="Submit"
     landingInputEnter.onclick=function(e){e.preventDefault(),submitRegisterForm(landingInputEmail.value,landingInputUsername.value,landingInputPassword.value)}
 
-    landingInputEmail.defaultValue="email@asd.com"
-    landingInputUsername.defaultValue="username"
-    landingInputPassword.defaultValue="password"
-    landingInputConfirmPassword.defaultValue="password"
+    landingInputEmail.defaultValue="email2@asd.com"
+    landingInputUsername.defaultValue="username2"
+    landingInputPassword.defaultValue="1234"
+    landingInputConfirmPassword.defaultValue="1234"
 
     landingForm.appendChild(landingInputEmail)
     landingForm.appendChild(landingInputUsername)

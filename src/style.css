@@ -1,6 +1,44 @@
+body {
+    margin: 0;
+}
+#landingFormMain button {
+    pointer-events: none;
+}
 input:valid{
     background-color: green;
 }
 input:user-invalid{
     background-color: red;
+}
+#userDetailsDropdownDiv{
+    display: none;
+    position: absolute; 
+
+    color: white;
+    background-color: black;
+    
+}
+#headerDiv>h3{
+    margin: 0;
+}
+#headerDiv>h4{
+    margin: 0;
+}
+#headerDiv:hover #userDetailsDropdownDiv{
+    display: flex;
+    flex-direction: column;} 
+#bodyDiv {
+    display: flex;
+}
+
+#bodyDiv>div{
+    flex: 1;
+}
+#mainDiv{
+    display: flex;
+}
+#agendaMainDiv>button{
+    background-color: black;
+    color: white;
+    position: absolute;
 }

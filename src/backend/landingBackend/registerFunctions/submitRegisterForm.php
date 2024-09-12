@@ -1,10 +1,15 @@
 <?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
-require_once './checkIfExisting.php';
-require_once './dbConnection.php';
+require_once '../../dbconnection/dbConnection.php';
+require_once '../verification/checkIfExisting.php';
 require_once './insertUser.php';
+require_once './createContactsTable.php';
 
 $conn=startConnection();
 // Check connection 
@@ -34,6 +39,7 @@ if(isset($_POST['username'])){
         $valuesStrings=[$userName,$userEmail,$userPassword];
 
         insertUser($tableName,$columnNames,$valuesStrings,$conn);
+        createContactsTable($conn,$userEmail);
         
         echo json_encode("Account Created!");
     } else {
