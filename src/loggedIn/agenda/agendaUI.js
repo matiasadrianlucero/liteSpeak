@@ -1,4 +1,5 @@
 import { contactsUI } from "./contacts/contactsUI"
+import { conversationsUI } from "./conversations/conversationsUI"
 function agendaUI(){    
     let agendaDiv=document.getElementById("agendaDiv")
     agendaDiv.innerHTML=""
@@ -6,6 +7,9 @@ function agendaUI(){
     agendaButtonsDiv.id="agendaButtonsDiv"
     let conversationsButton=document.createElement("button")
     conversationsButton.innerHTML="Conversations"
+    conversationsButton.onclick=function(){
+        conversationsUI()
+    }
     let contactsButton=document.createElement("button")
     contactsButton.innerHTML="Contacts"
     contactsButton.onclick=function(){

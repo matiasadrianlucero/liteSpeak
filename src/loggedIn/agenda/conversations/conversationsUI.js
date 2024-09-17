@@ -1,32 +1,29 @@
-import { retrieveContacts } from "./retrieveContacts"
-import { addContactUI } from "../../bodyContent/addContact/addContactUI"
-import { eraseContact } from "./eraseContact"
-import { displayContact } from "../../bodyContent/displayContact/displayContactUI"
-function contactsUI(){
-    let contacts=retrieveContacts()
-    contacts.then(function(data){
-        console.log(data)
+import { retrieveConversations } from "./retrieveConversations"
+import { displayChatUI } from "../../bodyContent/displayConversation/displayChatUI"
+export function conversationsUI(){
+    let agendaMainDiv=document.getElementById("agendaMainDiv")
+    agendaMainDiv.innerHTML=""
+    let conversations=retrieveConversations()
+    conversations.then(function(data){
         let agendaMainDiv=document.getElementById("agendaMainDiv")
         agendaMainDiv.innerHTML=""
-        let addPerson=document.createElement("button")
-        addPerson.innerHTML="+"
-        addPerson.onclick=function(){
-            addContactUI()
-        }
-        agendaMainDiv.appendChild(addPerson)
-    
+
+        
         data.map((map,index)=>{
+            map.splice(map.indexOf(localStorage.getItem("username")), 1);
+
+            console.log(map)
             let contactDiv=document.createElement("div")
             let contactImage=document.createElement("img")
             contactImage.src=map[0]
             let contactName=document.createElement("p")
-            contactName.innerHTML=map[1]
+            contactName.innerHTML=map[3]
             contactName.onclick=function(){
-                displayContact(map)
+                displayChatUI(map)
             }
 
             let eraseContactButton=document.createElement("button")
-            eraseContactButton.innerHTML="eraseContact"
+            eraseContactButton.innerHTML="Erase Conversation"
             eraseContactButton.onclick=function(){
                 eraseContact(map[1],localStorage.getItem("id"),localStorage.getItem("loginToken"))
             }
@@ -36,11 +33,10 @@ function contactsUI(){
             contactDiv.appendChild(eraseContactButton)
             agendaMainDiv.appendChild(contactDiv)
         })
-    
-    
         
         let agendaSearchDiv=document.getElementById("agendaSearchDiv")
         agendaSearchDiv.innerHTML=""
+
         let searchInput=document.createElement("input")
         searchInput.id="updateEmailInput"
         searchInput.type = "text";
@@ -49,6 +45,4 @@ function contactsUI(){
         agendaSearchDiv.appendChild(searchInput)
     })
 
-
 }
-export {contactsUI}

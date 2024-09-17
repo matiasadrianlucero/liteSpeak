@@ -1,12 +1,13 @@
-import { contactsUI } from "./contactsUI";
-function addContact(contactAddress){
+export function sendChat(convId,loginToken,username,chatValue){
     event.preventDefault()
     let formData = new FormData();
+    formData.append("convId", convId);
+    formData.append("loginToken", loginToken);
+    formData.append("username", username);
+    formData.append("chatValue", chatValue);
     formData.append("id", localStorage.getItem("id"));
-    formData.append("contactAddress", contactAddress);
-    formData.append("loginToken", localStorage.getItem("loginToken"));
 
-    fetch('http://localhost/liteSpeak/src/backend/loggedInBackend/contacts/addContact.php', {
+    fetch('http://localhost/liteSpeak/src/backend/loggedInBackend/conversations/sendChat.php', {
         method: 'POST',
         body: formData,
         mode: 'cors'
@@ -14,11 +15,9 @@ function addContact(contactAddress){
     .then(response => response.json())
     .then(data => {
         console.log(data)
-        contactsUI()
 })
     .catch((error) => {
         console.error('Error:', error);
         // Handle error response here
     });
 }
-export {addContact} 
