@@ -1,11 +1,12 @@
-export function startConversation(contactAddress,id,loginToken){
+export function unblockContact(id,contactId,loginToken){
+    event.preventDefault()
     let formData = new FormData();
-    formData.append("contactAddress", contactAddress);
+    formData.append("contactId", contactId);
+
     formData.append("id", id);
     formData.append("loginToken", loginToken);
-    formData.append("username", localStorage.getItem("username"));
 
-    fetch('http://localhost/liteSpeak/src/backend/loggedInBackend/conversations/startConversation.php', {
+    fetch('http://localhost/liteSpeak/src/backend/loggedInBackend/contacts/unblockContact.php', {
         method: 'POST',
         body: formData,
         mode: 'cors'

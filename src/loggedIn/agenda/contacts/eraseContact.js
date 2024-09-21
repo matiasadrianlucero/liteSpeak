@@ -1,5 +1,5 @@
 import { contactsUI } from "./contactsUI";
-export function eraseContact(emailOfContact,idOfUser,loginToken){{
+export function eraseContact(emailOfContact,idOfUser,loginToken){
     let formData = new FormData();
 
     formData.append("emailOfContact", emailOfContact);
@@ -18,6 +18,6 @@ export function eraseContact(emailOfContact,idOfUser,loginToken){{
     .catch((error) => {
         console.log(error)
     });
-}
+
 
 }

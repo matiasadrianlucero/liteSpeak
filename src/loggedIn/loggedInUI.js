@@ -1,28 +1,14 @@
-import { logout } from "./logout/logout"
-import { userDetails } from "./userDetails/userDetailsUI"
-import { agendaUI } from "./agenda/agendaUI"
+import { sideBarUI } from "./sideBar/sideBarUI"
+import { bodyUI } from "./bodyContent/bodyUI"
 function loggedInUI(){
     document.body.innerHTML=""
+    
+    let loggedInUI=document.createElement("div")
+    loggedInUI.id="loggedInUI"
 
-    let headerDiv=document.createElement("div")
-    headerDiv.id="headerDiv"
-
-    let mainDiv=document.createElement("div")
-    mainDiv.id="mainDiv"
-
-    let agendaDiv=document.createElement("div")
-    agendaDiv.id="agendaDiv"
-
-    let bodyDiv=document.createElement("div")
-    bodyDiv.id="bodyDiv"
-
-    mainDiv.appendChild(agendaDiv)
-    mainDiv.appendChild(bodyDiv)
-
-    document.body.appendChild(headerDiv)
-    document.body.appendChild(mainDiv)
-
-    userDetails()
-    agendaUI()
+    document.body.appendChild(loggedInUI)
+    
+    sideBarUI()
+    bodyUI()
 }
 export {loggedInUI}

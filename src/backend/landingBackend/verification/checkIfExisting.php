@@ -4,7 +4,6 @@
         session_start(); 
     } 
 function checkIfExisting($colToCheck, $table, $colName, $conn) {
-    // Sanitize table name (not using prepared statement)
     $sanitizedTable = preg_replace('/[^a-zA-Z0-9_]/', '', $table);
     
     $stmt = $conn->prepare("SELECT * FROM `$sanitizedTable` WHERE `$colToCheck` = ?");

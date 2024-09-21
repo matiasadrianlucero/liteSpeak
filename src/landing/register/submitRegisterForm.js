@@ -12,8 +12,21 @@ function submitRegisterForm(email,username,password){
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Success:', data);
-        // Handle success response here
+        let landingFormMain=document.getElementById("resultsDiv")
+        landingFormMain.innerHTML=""
+        if(data=="Account Created!") {
+            let result=document.createElement("p")
+            result.innerHTML=data
+            landingFormMain.appendChild(result)
+            result.style.color="#9CFC97"
+        } else {
+            data.map((map,index)=>{
+                let result=document.createElement("p")
+                result.innerHTML=map + "<br>"
+                result.style.color="red"
+                landingFormMain.appendChild(result)
+            })
+        }
     })
     .catch((error) => {
         console.error('Error:', error);

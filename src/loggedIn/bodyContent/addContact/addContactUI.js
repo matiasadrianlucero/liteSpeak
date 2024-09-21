@@ -1,4 +1,4 @@
-import { addContact } from "../../agenda/contacts/addContact"
+import { friendRequest } from "../../agenda/contacts/friendRequest"
 function addContactUI(){
     let bodyDiv=document.getElementById("bodyDiv")
     bodyDiv.innerHTML=""
@@ -15,7 +15,7 @@ function addContactUI(){
     let addContactSubmit=document.createElement("button")
     addContactSubmit.innerHTML="ADD"
     addContactSubmit.onclick=function(){
-        addContact(addContactInput.value)
+        friendRequest(addContactInput.value)
     }
 
     bodyDiv.appendChild(addContactPlus)

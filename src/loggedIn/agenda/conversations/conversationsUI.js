@@ -1,5 +1,6 @@
 import { retrieveConversations } from "./retrieveConversations"
 import { displayChatUI } from "../../bodyContent/displayConversation/displayChatUI"
+import { addContactUI } from "../../bodyContent/addContact/addContactUI"
 export function conversationsUI(){
     let agendaMainDiv=document.getElementById("agendaMainDiv")
     agendaMainDiv.innerHTML=""
@@ -8,11 +9,8 @@ export function conversationsUI(){
         let agendaMainDiv=document.getElementById("agendaMainDiv")
         agendaMainDiv.innerHTML=""
 
-        
         data.map((map,index)=>{
             map.splice(map.indexOf(localStorage.getItem("username")), 1);
-
-            console.log(map)
             let contactDiv=document.createElement("div")
             let contactImage=document.createElement("img")
             contactImage.src=map[0]
@@ -22,15 +20,9 @@ export function conversationsUI(){
                 displayChatUI(map)
             }
 
-            let eraseContactButton=document.createElement("button")
-            eraseContactButton.innerHTML="Erase Conversation"
-            eraseContactButton.onclick=function(){
-                eraseContact(map[1],localStorage.getItem("id"),localStorage.getItem("loginToken"))
-            }
-
             contactDiv.appendChild(contactImage)
             contactDiv.appendChild(contactName)
-            contactDiv.appendChild(eraseContactButton)
+            // contactDiv.appendChild(eraseContactButton)
             agendaMainDiv.appendChild(contactDiv)
         })
         
@@ -42,6 +34,13 @@ export function conversationsUI(){
         searchInput.type = "text";
         searchInput.placeholder = "Email";
     
+        let addPerson=document.createElement("button")
+        addPerson.innerHTML="+"
+        addPerson.onclick=function(){
+            addContactUI()
+        }
+        agendaMainDiv.appendChild(addPerson)
+
         agendaSearchDiv.appendChild(searchInput)
     })
 

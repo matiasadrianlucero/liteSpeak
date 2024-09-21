@@ -30,9 +30,7 @@ function logInUser($email,$password,$table,$colToCheck, $conn){
         
         return $rows;
     }else {
-        print("doesnt match email adress email");
-
-        // throw new Exception("Password doesn't match this email address");
+        return "This password doesn't match this email.";
     }
 }
 ?>

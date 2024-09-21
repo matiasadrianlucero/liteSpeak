@@ -1,4 +1,5 @@
 import { startConversation } from "./startConversation"
+import { blockContact } from "./blockContact"
 export function displayContact(data){
     let bodyDiv=document.getElementById("bodyDiv")
     bodyDiv.innerHTML=""
@@ -17,8 +18,18 @@ export function displayContact(data){
     startConversationButton.onclick=function(){
         startConversation(data[1],localStorage.getItem("id"),localStorage.getItem("loginToken"))
     }
+
+    
+    let blockContactButton=document.createElement("button")
+    blockContactButton.innerHTML="Block Contact"
+    blockContactButton.onclick=function(){
+        blockContact(data[3],localStorage.getItem("id"),localStorage.getItem("loginToken"))
+    }
+
     bodyDiv.appendChild(contactName)
     bodyDiv.appendChild(contactEmail)
     bodyDiv.appendChild(contactimg)
     bodyDiv.appendChild(startConversationButton)
+    bodyDiv.appendChild(blockContactButton)
+
 }

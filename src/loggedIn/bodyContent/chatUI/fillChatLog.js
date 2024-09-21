@@ -1,9 +1,9 @@
 import { retrieveChatLogs } from "./retrieveChatLogs"
-export function fillChatLog(convId,loginToken,id){
-            let chatLogDiv=document.getElementById("chatLogDiv")
+export function fillChatLog(loginToken,contactName,id,convId){
+    let chatLogDiv=document.getElementById("contactChatLogsDiv")
     chatLogDiv.innerHTML=""
 
-    let conversations=retrieveChatLogs(convId,loginToken,id)
+    let conversations=retrieveChatLogs(loginToken,contactName,id,convId)
     conversations.then(function(data){
         data.map((map,index)=>{
             let text=document.createElement("p")

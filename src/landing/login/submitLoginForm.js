@@ -13,9 +13,18 @@ function submitLoginForm(email,password){
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
-        storeLogin(data)
-        loggedInUI()
+        if(data=="This account doesn't exist."||data=="This password doesn't match this email."){
+            let landingFormMain=document.getElementById("resultsDiv")
+            landingFormMain.innerHTML=""
+            let result=document.createElement("p")
+            result.innerHTML=data
+            result.style.color="red"
+            landingFormMain.appendChild(result)
+        } else {
+            storeLogin(data)
+            loggedInUI()
+        }
+        
     })
     .catch((error) => {
         console.error('Error:', error);

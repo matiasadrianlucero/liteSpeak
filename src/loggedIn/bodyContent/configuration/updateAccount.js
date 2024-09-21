@@ -1,5 +1,5 @@
 import { updateLocalStorage } from "./udpateLocalStorage";
-import {userDetails} from "../../userDetails/userDetailsUI"
+import { loggedInUI } from "../../loggedInUI";
 function updateAccount(inputData,loginToken,option){
     event.preventDefault()
     let formData = new FormData();
@@ -17,7 +17,7 @@ function updateAccount(inputData,loginToken,option){
     .then(data => {
         console.log(data)
         updateLocalStorage(data)
-        userDetails()
+        loggedInUI()
     })
     .catch((error) => {
         console.error('Error:', error);

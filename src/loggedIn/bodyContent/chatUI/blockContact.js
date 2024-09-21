@@ -1,13 +1,12 @@
-export function sendChat(convId,loginToken,username,chatValue){
+export function blockContact(id,contactId,loginToken){
     event.preventDefault()
     let formData = new FormData();
-    formData.append("convId", convId);
-    formData.append("loginToken", loginToken);
-    formData.append("username", username);
-    formData.append("chatValue", chatValue);
-    formData.append("id", localStorage.getItem("id"));
+    formData.append("contactId", contactId);
 
-    fetch('http://localhost/liteSpeak/src/backend/loggedInBackend/conversations/sendChat.php', {
+    formData.append("id", id);
+    formData.append("loginToken", loginToken);
+
+    fetch('http://localhost/liteSpeak/src/backend/loggedInBackend/contacts/blockContact.php', {
         method: 'POST',
         body: formData,
         mode: 'cors'

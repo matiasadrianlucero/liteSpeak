@@ -33,10 +33,8 @@ if(isset($_POST['email'])){
         }
 
     } else {
-        // $errorWithFinding="No account found with that email.";
+        echo json_encode("This account doesn't exist.");
 
-        // echo json_encode($errorWithFinding);
-        print("no accoutn email");
     }
 }   
 ?>

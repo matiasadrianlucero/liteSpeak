@@ -9,7 +9,6 @@ header("Content-Type: application/json");
 require_once '../../dbconnection/dbConnection.php';
 require_once '../verification/checkIfExisting.php';
 require_once './insertUser.php';
-require_once './createContactsTable.php';
 
 $conn=startConnection();
 // Check connection 
@@ -39,16 +38,15 @@ if(isset($_POST['username'])){
         $valuesStrings=[$userName,$userEmail,$userPassword];
 
         insertUser($tableName,$columnNames,$valuesStrings,$conn);
-        createContactsTable($conn,$userEmail);
-        
-        echo json_encode("Account Created!");
+
+        echo json_encode("Account Created!.");
     } else {
         // print("error found");
         if($usernameCheck==false){
-            array_push($errorsOnRegistration,"Username Occupied");
+            array_push($errorsOnRegistration,"Username Occupied.");
         }
         if($emailCheck==false){
-            array_push($errorsOnRegistration,"Email Occupied");
+            array_push($errorsOnRegistration,"Email Occupied.");
         }
         echo json_encode($errorsOnRegistration);
     }
