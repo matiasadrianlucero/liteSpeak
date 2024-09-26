@@ -34,10 +34,10 @@ if ($conn->connect_error) {
             
             $stmt->execute();
              
-            print("Password Updated");
+            echo json_encode("Updated");
 
         }else {
-            print("Password doesn't match this account");
+            echo json_encode("Password doesn't match this account");
     
             // throw new Exception("Password doesn't match this email address");
         }

@@ -1,3 +1,6 @@
+import { notification } from "../../elements/notification";
+import { displayRecievedRequestsUI } from "./requestsUI/displayRecievedRequestsUI";
+import {contactsUI} from "../../sideBar/contactsUI"
 export function acceptRequest(requestId,id,loginToken){
     let formData = new FormData();
     formData.append("requestId", requestId);
@@ -14,7 +17,10 @@ export function acceptRequest(requestId,id,loginToken){
         console.log(data)
     })
     .catch((error) => {
-        console.log(data)
+        displayRecievedRequestsUI()
+        contactsUI()
+        //I recieve a "-" after sending a request but i cant find the source of the problem, 
+        //i checked by putting all the code in comments but i get a -, regardless the function works but can't get the success message as json_encode
     });
 
 

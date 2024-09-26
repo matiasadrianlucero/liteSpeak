@@ -1,3 +1,5 @@
+import { notification } from "../../elements/notification";
+import { displaySentRequestsUI } from "./requestsUI/displaySentRequestsUI";
 export function cancelRequest(requestId,id,loginToken){
         let formData = new FormData();
         formData.append("idOfRequest", requestId);
@@ -11,7 +13,8 @@ export function cancelRequest(requestId,id,loginToken){
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            notification(data)
+            displaySentRequestsUI()
         })
         .catch((error) => {
             console.log(data)

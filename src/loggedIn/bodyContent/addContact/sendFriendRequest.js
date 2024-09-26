@@ -1,3 +1,5 @@
+import { notification } from "../../elements/notification";
+
 export function sendFriendRequest(idFriend,id,loginToken){
         let formData = new FormData();
         formData.append("idFriend", idFriend);
@@ -11,7 +13,7 @@ export function sendFriendRequest(idFriend,id,loginToken){
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            notification(data)
         })
         .catch((error) => {
             console.log(error)

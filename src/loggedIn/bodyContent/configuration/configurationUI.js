@@ -1,8 +1,11 @@
 import { updateAccount } from "./updateAccount"
 import { updatePassword } from "./updatePassword"
+import { updateAvatar } from "./updateAvatar"
 function configurationUI(){
     let bodyDiv=document.getElementById("bodyDiv")
     bodyDiv.innerHTML=""
+    let configurationUIDiv=document.createElement("div")
+    configurationUIDiv.id="configurationUIDiv"
     ////User Details
         let accountDetails=document.createElement("h1")
         accountDetails.innerHTML="Account Details"
@@ -28,6 +31,28 @@ function configurationUI(){
         updateUsernameDiv.appendChild(updateUsername)
         updateUsernameDiv.appendChild(updateUsernameInput)
         updateUsernameDiv.appendChild(submitUpdateUsername)
+                //IMAGE UPDATE
+        let updateAvatarDiv=document.createElement("div")
+
+        let updateAvatarText=document.createElement("p")
+        updateAvatarText.innerHTML="Update Avatar"
+
+        let updateAvatarinput=document.createElement("input")
+        updateAvatarinput.id="updateAvatarinput"
+        updateAvatarinput.type = "file";
+        updateAvatarinput.placeholder = "avatar";
+        updateAvatarinput.required=true
+
+        let submitUpdateAvatar=document.createElement("button")
+        submitUpdateAvatar.id="submitUpdateAvatar"
+        submitUpdateAvatar.innerHTML = ">";
+        submitUpdateAvatar.onclick=function(){
+            updateAvatar(localStorage.getItem("id"),updateAvatarinput.files[0],localStorage.getItem("loginToken"))
+        }
+
+        updateAvatarDiv.appendChild(updateAvatarText)
+        updateAvatarDiv.appendChild(updateAvatarinput)
+        updateAvatarDiv.appendChild(submitUpdateAvatar)
         //EMAIL UPD
         let updateEmailDiv=document.createElement("div")
 
@@ -78,31 +103,27 @@ function configurationUI(){
         updateCurrentPasswordInput.placeholder = "Current Password";
         updateCurrentPasswordInput.required=true
         //
-        
-        let updatePasswordSubmitDiv=document.createElement("div")
-
         let updatePasswordButton=document.createElement("button")
-        updatePasswordButton.innerHTML="Update Password"
+        updatePasswordButton.innerHTML=">"
         updatePasswordButton.onclick=function(){
             updatePassword(updatePasswordInput.value,updateCurrentPasswordInput.value,localStorage.getItem("loginToken"))
         } 
 
-
-        updatePasswordSubmitDiv.appendChild(updatePasswordButton)
-
         updateCurrentPasswordDiv.appendChild(updateCurrentPassword)
         updateCurrentPasswordDiv.appendChild(updateCurrentPasswordInput)
-        updateCurrentPasswordDiv.appendChild(updatePasswordSubmitDiv)
+        updateCurrentPasswordDiv.appendChild(updatePasswordButton)
+        
         // updateCurrentPasswordDiv.appendChild(submitCurrentUpdatePassword)
     ////
-    bodyDiv.appendChild(accountDetails)
-    bodyDiv.appendChild(updateUsernameDiv)
-    bodyDiv.appendChild(updateEmailDiv)
+    configurationUIDiv.appendChild(accountDetails)
+    configurationUIDiv.appendChild(updateUsernameDiv)
+    configurationUIDiv.appendChild(updateEmailDiv)
+    configurationUIDiv.appendChild(updateAvatarDiv)
 
-    bodyDiv.appendChild(advancedPreferences)
-    bodyDiv.appendChild(updatePasswordDiv)
-    bodyDiv.appendChild(updateCurrentPasswordDiv)
-
+    configurationUIDiv.appendChild(advancedPreferences)
+    configurationUIDiv.appendChild(updatePasswordDiv)
+    configurationUIDiv.appendChild(updateCurrentPasswordDiv)
+        bodyDiv.appendChild(configurationUIDiv)
     //
     // let advancedDetails=document.createElement("h1")
     // advancedDetails.innerHTML="Advanced Details"

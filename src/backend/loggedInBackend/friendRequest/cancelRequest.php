@@ -6,13 +6,12 @@ include_once "../verifyToken/verifyToken.php";
 
 $conn=startConnection();
     if(verifyToken($conn,$_POST["loginToken"],$_POST["id"])&& $_POST["idOfRequest"]){
-        $status='rejected';
-        $stmt = $conn->prepare("UPDATE friendrequests set status=? where requestId=? and sentBy=?");
-        $stmt->bind_param("ss",$status,$_POST["idOfRequest"],$_POST["id"]);
+        $stmt = $conn->prepare("DELETE FROM friendrequests where requestId=? and sentBy=?");
+        $stmt->bind_param("ss",$_POST["idOfRequest"],$_POST["id"]);
         
         $stmt->execute();
-        echo json_encode("REQUEST CANCELLED");
+        echo json_encode("Request cancelled");
     } else {
-        echo json_encode("REQUEST NOT FOUND");
+        echo json_encode("Error: not logged in.");
     }
 

@@ -1,7 +1,9 @@
-export function unblockContact(id,contactId,loginToken){
+import { displayBlockedRequestsUI } from "./requestsUI/displayBlockedRequestsUI";
+import { notification } from "../../elements/notification";
+export function unblockContact(id,convId,loginToken){
     event.preventDefault()
     let formData = new FormData();
-    formData.append("contactId", contactId);
+    formData.append("convId", convId);
 
     formData.append("id", id);
     formData.append("loginToken", loginToken);
@@ -13,7 +15,8 @@ export function unblockContact(id,contactId,loginToken){
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        notification(data)
+        displayBlockedRequestsUI()
 })
     .catch((error) => {
         console.error('Error:', error);

@@ -14,7 +14,8 @@ function submitRegisterForm(email,username,password){
     .then(data => {
         let landingFormMain=document.getElementById("resultsDiv")
         landingFormMain.innerHTML=""
-        if(data=="Account Created!") {
+        console.log(data)
+        if(data=="Account Created!.") {
             let result=document.createElement("p")
             result.innerHTML=data
             landingFormMain.appendChild(result)

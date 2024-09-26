@@ -1,20 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
     margin: 0;
     background-color: #05050A
     ;
+
     color: white;
 }
 #landingFormMain{
     background-color: #05050A
 
 }
+p{
+    font-size: 1vw;
+}
+
 img{
-    height: .3vw;
-    width: .3vw;
-    background-color: red;
+    object-fit: cover;
 }
 #landingFormMain button{
     pointer-events: none;
@@ -51,28 +56,73 @@ input:valid{
     outline: 1px #9CFC97 solid;
 }
 input:user-invalid{
-    outline: 1PX red solid;
+    outline: 1PX brown solid;
 }
 #userDivDropdown{
-    display: none;
+
     position: absolute; 
     color: white;
-    background-color: black;
-    
+    grid-area: userDivDropdown;
+    width: 20vw;
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.877);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.856);
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
+}
+#userDivDropdown>button{
+    padding: .5vw;
+    background-color: #05050A;
+    color: white;
+    outline: none;
+    border: none;
+    border: 1px solid black;
+    transition: .2s all;
+    text-align: left;
+}
+#userDivDropdown>button:hover{
+    background-color: rgb(132, 130, 143);
+}
+#userDiv>img{
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    border: 1px solid black;
+    grid-area: img;
+}
+#userDiv>p{
+
+    margin: 0;
+}
+#userName{
+    grid-area: username;
+
+}
+#userEmail{
+    grid-area: email;
+    color: #6e6e88;
 }
 #userDiv{
+    font-family: "League Spartan", sans-serif;
+    align-items: center;
+    display: grid;
+    grid-template:
+    "img  username" 1vw
+    "img email"1em
+    "userDivDropdown userDivDropdown"
+    ;
+    grid-template-columns: 4vw;
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.877);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.856);
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
     padding: 1vw;
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
+    cursor: pointer;
+
 }
-#userDiv:hover #userDivDropdown{
-    display: flex;
-    flex-direction: column;
+#userDiv:hover {
+background-color: #6e6e8817;
 } 
-.hoverToDropDown:hover .dropDownDiv{
-    display: flex;
-    flex-direction: column
-}
 .dropDownDiv{
-    display: none;
     position: absolute; 
     color: white;
     background-color: black;
@@ -80,6 +130,8 @@ input:user-invalid{
 
 #bodyDiv>div{
     flex: 1;
+    font-family: "League Spartan", sans-serif;
+
 }
 #mainDiv{
     display: flex;
@@ -114,9 +166,8 @@ box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
 padding:1vw;
 background-color: #00000048;
 }
-#landingUIPresentation>h1{
-    
-}
+
+
 #landingUIMain{
     padding: 1vw;
     flex: 1;
@@ -239,15 +290,435 @@ background-color: #00000048;
     align-self: center;
     justify-content: center;
     backdrop-filter: blur(80px);
+    height: 100vh;
 
+    
 }
 #sideBarDiv{
     flex-basis: 20%;
-
+    margin-top: 7vh;
+    margin-bottom:7vh;
+    /* border: .1px white solid; */
+    background-color: #05050A;
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.877);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.856);
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
+    border: black 1px solid;
+    font-family: "League Spartan", sans-serif;
 }
 #bodyDiv {
-    flex-basis: 30%;
+    /* border: .5px white solid; */
+    border: black 1px solid;
+
+    flex-basis: 50%;
+    margin-top: 7vh;
+    margin-left: 2vh;
+    margin-bottom:7vh;
+    background-color: #05050A;
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.877);
+-moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.856);
+box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
     }
 .hoverToDropDown{
     padding: 1vw;
+    position: absolute;
+    background-color: #000000;
+}
+#contactsDiv{
+    padding: 1vw;
+    overflow: auto;
+    height: 80%;
+    padding-top: 0;
+    text-align: center;
+}
+#contactsDiv>div{
+    display: flex;
+    align-items: center;
+    padding: .5vw;
+    border: 1px solid #6e6e8869;
+    border-radius: 2px;
+    height: 3vw;
+    transition: .3s all;
+    margin-top: .5vw;
+    margin-bottom: .5vw;
+}
+#contactsDiv>div:hover{
+    background-color: #6e6e88;
+}
+#contactsDiv>div>img{
+    height: 2vw;
+    width:  2vw;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-right: 1vw;
+}
+.contactImg{
+    height: 2vw;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-right: 1vw;
+}
+input{
+    padding: .5vw;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid #6e6e88;
+    transition: 1s all;
+    width: 80%;
+    background-color: #030306;
+    font-size: 1vw;
+}
+#sideBarDiv>div>input::after{
+    background-color: #030306;
+}
+#sideBarDiv>div>input:invalid{
+    outline: none;
+}
+#searchInputDiv{
+    text-align: center;
+    margin-top: 1vw;
+}
+#bodyDiv input:valid{
+    outline: none;
+}
+#bodyDiv input:invalid{
+    outline: none;
+}
+#bodyDiv input:focus{
+    outline: none;
+}
+#requestsDiv{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2vw;
+    gap: .5vw;
+    height: 90%;
+}
+#requestsDiv>div{
+    flex: 1;
+    
+}      
+#requestsDiv button{
+    background-color: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+#requestsDiv>div>div{
+    overflow: auto;
+    height: 80%;
+}
+#sentRequestsDiv>div{
+    cursor: pointer;
+}  
+#sentRequestsDiv>div:hover{
+    background-color: brown;
+}
+#requestsDiv p{
+    margin: 0;
+    font-family: "League Spartan", sans-serif;
+}
+#requestsDiv>div>div>div{
+    display: grid;
+    grid-template:
+        "img contactName" 1vw
+        ". contactStatus" 1em;
+        padding: 1vw;
+        grid-template-rows: 1.5vw;
+        margin-bottom: .5vw;
+        border: #6e6e88 1px solid;
+        grid-template-columns: 3vw;
+    height: 10%;
+}
+#requestsDiv h2{
+    height: 12%;
+}
+#requestsDiv img{
+    border-radius: 50%;
+    height: 2vw;
+    width: 2vw;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-right: 1vw;
+    grid-area: img;
+}
+#contactStatus{
+    grid-area: contactStatus;
+}
+#contactName{
+    grid-area: contactName;
+}
+
+#recievedButtonsDiv{
+    grid-area: contactStatus;
+}
+#blockedRequestsDiv>div:hover{
+    background-color: #558853;
+}
+#blockedRequestsDiv>div{
+     grid-template-rows: none !important;
+     
+}
+#configurationUIDiv{
+    padding: 1.5vw; 
+    height: 100%;
+}
+#configurationUIDiv>div{
+    display: flex;
+    justify-content: center;
+    margin: 1vw;
+}
+#configurationUIDiv button{
+    color: #558853;
+    background-color: none;
+    padding: .3vw;
+    background-color: #030306;
+    border: 1px solid #6e6e88;
+    cursor: pointer;
+
+    border-left: none;
+}
+
+#configurationUIDiv button:hover{
+    color: #9CFC97;
+    background-color: #558853;
+}
+#configurationUIDiv input {
+    border-right: none;
+    border-radius: 0;
+    margin-left: 1vw;
+    flex:1
+}
+input[type="file"]{
+    padding: .35vw;
+}
+#updatePasswordInput{
+    border-right: 1px solid #6e6e88 !important;
+}
+#contactDiv{
+    height: 7%;
+    display: flex;
+    align-items: center;
+padding-top: .5vw;
+padding-left: 1vw;
+padding-bottom: .5vw;
+}
+#contactDiv>img{
+    flex: 0;
+    align-items: start;
+    height: 2vw;
+    width: 2vw;
+    padding-right: 1vw;
+
+}
+#contactChatLogsDiv img{
+    height: 8vw;
+    width: 10vw;
+    padding-top: 1vw;
+    
+}
+#contactChatLogsDiv img:hover{
+    height: 20vw;
+    width: 23vw;
+
+}
+#contactName{
+    flex: 1;
+}
+#contactChatLogsDiv{
+    background-image: url("img/icons/chatPattern.png");
+    -webkit-box-shadow: inset 0px 0px 8px 6px rgba(0,0,0,0.62);
+    -moz-box-shadow: inset 0px 0px 8px 6px rgba(0,0,0,0.62);
+    box-shadow: inset 0px 0px 8px 6px rgba(0,0,0,0.62);
+    height: 85%;
+    background-color: #6e6e88;
+    display: flex;
+    flex-direction: column;
+gap: .5vw;    align-content: flex-end;
+
+padding: 1vw;
+overflow: auto;
+
+}
+#chatUiDiv{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#contactSendChatDiv{
+    height: 8%;
+    display: flex;
+    padding: 1vw;
+    justify-content: flex-start;
+    
+}
+#contactSendChatDiv img{
+    height: 2vw;
+    width: 2vw;
+    padding:.3vw
+}
+#contactSendChatDiv>button{
+    background-color: none;
+    text-decoration: none;
+    background: none;
+    outline: none;
+    border: none;
+    margin-right: 1vw;
+
+}
+#inputDiv{
+    display: flex;
+    flex-basis:auto;
+    flex-basis: 100%;
+}
+
+#inputDiv button{
+    color: #558853;
+    background-color: none;
+    padding: .5vw;
+    background-color: #030306;
+    border: 1px solid #6e6e88;
+    cursor: pointer;
+
+    border-left: none;
+}
+#inputDiv button:hover{
+    color: #9CFC97;
+    background-color: #558853;
+}
+#inputDiv input:valid{
+    outline: none;
+}
+#inputDiv input:active{
+    outline: none;
+
+}
+#inputDiv input {
+    border-right: none;
+    border-radius:0px;
+}
+.selectedImage{
+    filter:hue-rotate(0deg);
+    filter: saturate(var(--value, 5));
+    background-color: #000000 !important;
+    border-radius: 50%;
+}
+.msgDiv{
+    background-color: #030306;
+    border-radius: 10px;
+    width: 50%;
+padding-left: 1vw;
+padding-right: 1vw;
+padding-bottom: .2vw;
+}
+.chatTime{
+    color: #6e6e88;
+}
+#cogImg{
+    height: 1.5vw;
+    width: 1.5vw;
+
+    padding: .8vw;
+}
+#cogImg:hover {
+    animation: rotateCog 1s
+}
+@keyframes rotateCog{
+    0%{
+        transform:rotate(0deg)
+    }
+    100%{
+        transform:rotate(180deg)
+    }
+}
+
+*::-webkit-scrollbar { 
+    background-color: black;
+  }
+  
+*::-webkit-scrollbar-thumb { 
+    background-color: #030307;
+    border: 1px solid black;
+
+  }
+  #contactOptionHover{
+    flex-direction: row!important;
+  }
+  #contactOptionHover>button{
+    border-radius: 5px;
+    background-color: transparent;
+    color: #6e6e88;
+    border: 2.5px solid #6e6e88;
+    margin-right: .4vw;
+    font-weight: bolder;
+    padding: .5vw;
+    font-family: "League Spartan", sans-serif;
+    flex: 1;
+  }
+  #contactOptionHover>button:hover{
+    color: brown;
+    border: 2.5px solid brown;
+    cursor: pointer;
+  }
+  #addContactDiv{
+    padding: 1vw;
+  }
+  #searchDiv{
+    padding: 1vw;
+  }
+  #searchDiv div{
+    display: flex;
+    cursor: pointer;
+    width: 50%;
+    margin: 1vw;
+    padding: .5vw;
+    align-items: center;
+    transition: 1s all;
+  }
+  #searchDiv div:hover{
+    background-color: #558853;
+
+  }
+  #searchDiv img {
+    height: 3vw;
+    width: 3vw;
+    border-radius: 50%;
+    margin-right: 1vw;
+  }
+  #bodyIntro{
+    padding: 1vw;
+    display: flex;
+    gap: 1vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  #bodyIntro>div{
+    flex-basis: 30%;
+  }
+  h1, h2,h3{
+    font-family: "Montserrat", sans-serif;
+    color: #E6FAFC;
+    font-size: 2vw;
+}
+button {
+
+font-size: 1vw;
+}
+
+#notificationDiv{
+        position: fixed;
+        
+        background-color: none;
+        border: #6e6e88 2.5px solid;
+        margin-left: 50vw;
+        color: #6e6e88;
+        font-family: "Montserrat", sans-serif;
+
+        bottom: 0;
+        margin-bottom: 10vw;
+        padding: 1vw;
+        
+}
+#notificationBodyDiv{
+    position: absolute;
 }

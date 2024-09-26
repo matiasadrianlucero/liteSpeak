@@ -1,5 +1,7 @@
 import { updateLocalStorage } from "./udpateLocalStorage";
-import { loggedInUI } from "../../loggedInUI";
+import { sideBarUI } from "../../sideBar/sideBarUI";
+import { notification } from "../../elements/notification";
+import { userDetailsUI } from "../../sideBar/userDetailsUI";
 function updateAccount(inputData,loginToken,option){
     event.preventDefault()
     let formData = new FormData();
@@ -15,9 +17,16 @@ function updateAccount(inputData,loginToken,option){
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
-        updateLocalStorage(data)
-        loggedInUI()
+        if(data=="Email Occupied"|| data=="Invalid Email Address"||data=="Username Occupied"){
+            console.log("fail")
+            notification(data,"fail")
+        } else {
+            updateLocalStorage(data)
+            userDetailsUI()
+            notification("Updated")
+        }
+
+
     })
     .catch((error) => {
         console.error('Error:', error);

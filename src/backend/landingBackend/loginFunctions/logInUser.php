@@ -11,7 +11,7 @@ function logInUser($email,$password,$table,$colToCheck, $conn){
 
     $sanitizedTable = preg_replace('/[^a-zA-Z0-9_]/', '', $table);
     
-    $stmt = $conn->prepare("SELECT userName,userEmail,userPassword,userId FROM `$sanitizedTable` WHERE `$colToCheck` = ?");
+    $stmt = $conn->prepare("SELECT userName,userEmail,userPassword,userId,userAvatar FROM `$sanitizedTable` WHERE `$colToCheck` = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $resultSTMT = $stmt->get_result();

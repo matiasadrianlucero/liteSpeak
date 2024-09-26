@@ -15,18 +15,17 @@ header("Content-Type: application/json");
             "SELECT users.userName,users.userAvatar,contacts.id 
             FROM users 
             INNER JOIN contacts 
-            ON contacts.userIdOf1=users.userId 
-            and users.userId!=?
-            OR contacts.userIdOf2=users.userId 
-            and users.userId!=?
+            ON contacts.userIdOf1=users.userId and users.userId!=?
+            OR contacts.userIdOf2=users.userId and users.userId!=?
             where userIdOf1=? 
+            and relationship=? 
             or userIdOf2=? 
             and relationship=? 
             -- and contacts.userIdOf1!=?
             -- or contacts.userIdOf2!=? 
             "
             );              
-            $stmt->bind_param("sssss",$_POST["id"],$_POST["id"],$_POST["id"],$_POST["id"],$relationship);
+            $stmt->bind_param("ssssss",$_POST["id"],$_POST["id"],$_POST["id"],$relationship,$_POST["id"],$relationship);
       
             $stmt->execute();
     

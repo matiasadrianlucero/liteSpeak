@@ -1,4 +1,5 @@
 import { fillChatLog } from "./fillChatLog";
+
 export function sendChat(loginToken,message,id,convId,type,username){
     let formData = new FormData();
     formData.append("id", id);
@@ -15,7 +16,7 @@ export function sendChat(loginToken,message,id,convId,type,username){
     })
     .then(response => response.json())
     .then(data => {
-
+        fillChatLog(loginToken,id,convId)
     })
     .catch((error) => {
         console.error('Error:', error);

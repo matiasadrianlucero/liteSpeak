@@ -1,9 +1,9 @@
 <?php
 function checkIfRequestExisting($conn,$sentBy,$sentTo){
     $sanitizedTable = preg_replace('/[^a-zA-Z0-9_]/', '', 'friendrequests');
-    
-    $stmt = $conn->prepare("SELECT status FROM `$sanitizedTable` WHERE `sentBy` = ? AND `sentTo` = ?");
-    $stmt->bind_param("ss",$sentBy,$sentTo);
+    $status='pending';
+    $stmt = $conn->prepare("SELECT status FROM `$sanitizedTable` WHERE `sentBy` = ? AND `sentTo` = ? and status=?");
+    $stmt->bind_param("sss",$sentBy,$sentTo,$status);
     
     $stmt->execute();
     

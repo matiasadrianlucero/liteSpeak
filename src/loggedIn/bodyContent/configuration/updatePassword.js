@@ -1,4 +1,5 @@
 
+import { notification } from "../../elements/notification";
 function updatePassword(updatePassword,verifyPassword,loginToken){
     event.preventDefault()
     let formData = new FormData();
@@ -14,7 +15,7 @@ function updatePassword(updatePassword,verifyPassword,loginToken){
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        notification(data)
     })
     .catch((error) => {
         console.error('Error:', error);

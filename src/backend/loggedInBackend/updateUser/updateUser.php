@@ -16,10 +16,11 @@ if ($conn->connect_error) {
     die("Connection failure: " 
         . $conn->connect_error); 
 }   
-if ($_POST["updateData"]&&$_POST["loginToken"]!=''&&verifyToken($conn,$_POST["loginToken"],$_POST["id"])){
+if ($_POST["loginToken"]!=''&&verifyToken($conn,$_POST["loginToken"],$_POST["id"])){
     switch ($_POST["option"]) {
         case 0:
             $col="userName";
+            $return="Username";
             $usernameCheck=checkIfExisting($col,"users",$_POST['updateData'],$conn);
             if($usernameCheck==false){
                 echo json_encode("Username Occupied");
@@ -29,13 +30,14 @@ if ($_POST["updateData"]&&$_POST["loginToken"]!=''&&verifyToken($conn,$_POST["lo
         case 1:
             if(filter_var($_POST['updateData'], FILTER_VALIDATE_EMAIL)){
                 $col="userEmail";
+                $return="Email";
                 $usernameCheck=checkIfExisting($col,"users",$_POST['updateData'],$conn);
                 if($usernameCheck==false){
                     echo json_encode("Email Occupied");
                     return;
                 }     
             } else {
-                echo json_encode("Invalid Email Adress");
+                echo json_encode("Invalid Email Address");
                 return;
             }
 
@@ -48,6 +50,6 @@ if ($_POST["updateData"]&&$_POST["loginToken"]!=''&&verifyToken($conn,$_POST["lo
             
     $stmt->execute();
         
-    echo json_encode([$col,$_POST['updateData']]);
+    echo json_encode([$col,$_POST["updateData"]]);
 }
 ?>

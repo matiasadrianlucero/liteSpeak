@@ -1,3 +1,6 @@
+import { notification } from "../elements/notification"
+import { introUI } from "./intro/introUI"
+
 export function bodyUI(){
     let loggedInUI=document.getElementById("loggedInUI")
 
@@ -5,4 +8,5 @@ export function bodyUI(){
     bodyDiv.id="bodyDiv"
 
     loggedInUI.appendChild(bodyDiv)
+    introUI()
 }

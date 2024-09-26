@@ -41,7 +41,6 @@ if(isset($_POST['username'])){
 
         echo json_encode("Account Created!.");
     } else {
-        // print("error found");
         if($usernameCheck==false){
             array_push($errorsOnRegistration,"Username Occupied.");
         }
