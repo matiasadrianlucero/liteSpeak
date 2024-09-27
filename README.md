@@ -1,5 +1,5 @@
 # liteSpeak
-⚪A social website where two users cand send text or images to each other.
+⚪A social website where two users cand send text or images to each other.<br>
 ⚪After making a few websites with react and php, i decided i wanted to practice js more since i thought i wasn't using react to its full potential, so i started theodinproject to relearn everything. I wanted to join js and php to make something cohesive, meaning a website thats well rounded in front-end and in back-end, altough it's not perfect i do think i achieved that well roundedness. Also got some reps with webpack.
 ⚪I wanted to be tidier, i think achieved that to a certain extent, but i feel like it's still messy (some functions might not follow the naming conventions that i established, would like to reorganize and rename some files).
 ⚪No responsive design for cellphones, as much as i would've liked to incorporate it, this project served it's purpose and i don't wan't it to drag on for longer(2-3 weeks, had to trash quite a bit because i didn't like how somethings turned out).
