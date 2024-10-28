@@ -1,5 +1,5 @@
 # LS
-##⚪A social website where two users cand text or images to each other.<br>
+##A social website where two users cand text or images to each other.<br>
 ⚪Landing.
 ![Landing Screenshot](./READMEIMAGES/scr1.png)
 ⚪Loggedin Introduction.
