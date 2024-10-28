@@ -5,7 +5,7 @@
 ⚪Loggedin Introduction.
 ![Landing Screenshot](./READMEIMAGES/scr2.png)
 ⚪Search a user.
-![Landing Screenshot](./READMEIMAGES/scr3.png)
+![Landing Screenshot](./READMEIMAGES/scr7.png)
 ⚪Account Settings.
 ![Landing Screenshot](./READMEIMAGES/scr4.png)
 ⚪Manage Requests.
