@@ -16,4 +16,3 @@ function insertToken($token,$conn,$email){
 
 }
 
-?>

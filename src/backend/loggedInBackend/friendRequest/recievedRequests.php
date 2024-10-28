@@ -8,15 +8,21 @@ $conn=startConnection();
 
 
     if(verifyToken($conn,$_POST["loginToken"],$_POST["id"])){
-        $status="pending";
-        $stmt = $conn->prepare("SELECT users.userName,users.userAvatar,friendrequests.requestId,friendrequests.status FROM friendrequests INNER JOIN users ON friendrequests.sentBy=users.userId WHERE sentTo=? AND status=?");
-        $stmt->bind_param("ss",$_POST["id"],$status);
-        
-        $stmt->execute();
-        $results = $stmt->get_result();
-        $rows = $results->fetch_all(MYSQLI_NUM);
 
-        echo json_encode($rows);
+        $status="pending";
+        try{
+            $stmt = $conn->prepare("SELECT users.userName,users.userAvatar,friendrequests.requestId,friendrequests.status FROM friendrequests INNER JOIN users ON friendrequests.sentBy=users.userId WHERE sentTo=? AND status=?");
+            $stmt->bind_param("ss",$_POST["id"],$status);
+            
+            $stmt->execute();
+            $results = $stmt->get_result();
+            $rows = $results->fetch_all(MYSQLI_NUM);
+    
+            echo json_encode($rows);
+        } catch (Exception $e){
+            var_dump($e);
+        }
+
     } else {
         echo json_encode("REQUEST ALREADY SENT");
     }

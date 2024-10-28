@@ -7,6 +7,7 @@ include_once "../../getDataInRows/getUserData.php";
 $conn=startConnection();
 
 if($_POST["userToSearch"]){
+    
     $toGet="userId,userName,userEmail,userAvatar";
 
     if(filter_var($_POST['userToSearch'], FILTER_VALIDATE_EMAIL)){

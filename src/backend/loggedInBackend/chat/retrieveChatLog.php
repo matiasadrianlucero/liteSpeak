@@ -9,23 +9,37 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
 if(verifyToken($conn,$_POST["loginToken"],$_POST["id"])&& verifyConversation($_POST["id"],$_POST["convId"],$conn)){
-
-
-    $convId="conversationof".$_POST["convId"];
-
-    $stmt = $conn->prepare("SELECT users.userName,$convId.message,$convId.type,$convId.timeSent
-    FROM $convId 
-    inner join users
-    on users.userId=$convId.userId
-    ");       
-    $stmt->execute();         
-    $results = $stmt->get_result();
-    $rows = $results->fetch_all(MYSQLI_NUM);
-        
-    echo json_encode($rows);
+    try{
+        $convId="conversationof".$_POST["convId"];
+        if(isset($_POST["lastMessageTime"])){
+            $timeSent=$_POST["lastMessageTime"];
+    
+            $stmt = $conn->prepare("SELECT users.userName,$convId.message,$convId.type,$convId.timeSent
+            FROM $convId 
+            inner join users
+            on users.userId=$convId.userId
+            where $convId.timeSent>?");
+            
+            $stmt->bind_param("s", $timeSent);  
+        } else {
+            $stmt = $conn->prepare("SELECT users.userName,$convId.message,$convId.type,$convId.timeSent
+            FROM $convId 
+            inner join users
+            on users.userId=$convId.userId
+            ");       
+        }
+    
+        $stmt->execute();         
+        $results = $stmt->get_result();
+        $rows = $results->fetch_all(MYSQLI_NUM);
+            
+        echo json_encode($rows);
+    
+    }catch(Exception $e){
+        var_dump($e);
+    }
 
 } else {
-        echo json_encode("ERROR2");
+        echo json_encode("CONVERSATION DOESN'T BELONG TO USER");
      
 }
-?>

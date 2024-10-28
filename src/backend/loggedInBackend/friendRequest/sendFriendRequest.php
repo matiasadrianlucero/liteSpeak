@@ -4,10 +4,10 @@ header("Content-Type: application/json");
 include_once "../../dbconnection/dbConnection.php";
 include_once "../../getDataInRows/getUserData.php";
 include_once "../verifyToken/verifyToken.php";
-include_once "./checkIfRequestExisting.php";
-include_once "./checkIfReverseRequestExisting.php";
-include_once "./checkIfAlreadyFriend.php";
-include_once "./checkIfBlocked.php";
+include_once "./check/checkIfRequestExisting.php";
+include_once "./check/checkIfReverseRequestExisting.php";
+include_once "./check/checkIfAlreadyFriend.php";
+include_once "./check/checkIfBlocked.php";
 
 
 $conn=startConnection();

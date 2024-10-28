@@ -6,15 +6,19 @@ function getUserData($conn,$toGet,$getByColumn,$getBy){
     }, $columns);
     
     $tableSanitized = implode(', ', $sanitizedColumns);
+    try{
+        $stmt = $conn->prepare("SELECT $tableSanitized FROM `users` WHERE $getByColumn = ?");
+        $stmt->bind_param("s", $getBy);
+        
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
     
-    $stmt = $conn->prepare("SELECT $tableSanitized FROM `users` WHERE $getByColumn = ?");
-    $stmt->bind_param("s", $getBy);
-    
-    $stmt->execute();
-    
-    $result = $stmt->get_result();
+        $rows = $result->fetch_array(MYSQLI_NUM);
+        return $rows;
+    } catch(Exception $e){
+        var_dump($e);
+    }
 
-    $rows = $result->fetch_array(MYSQLI_NUM);
-    return $rows;
 }
 ?>

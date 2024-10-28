@@ -1,0 +1,26 @@
+export function retrieveChatLogs(loginToken,id,convId){
+    return new Promise(function(resolve, reject) {
+        let formData = new FormData();
+        formData.append("id", id);
+        formData.append("loginToken", loginToken);
+        formData.append("convId", convId);
+        if(localStorage.getItem("lastMessageSent")!="empty"){
+            formData.append("lastMessageTime",localStorage.getItem("lastMessageSent"));
+        }
+        
+        fetch('http://localhost/liteSpeak/src/backend/loggedInBackend/chat/retrieveChatLog.php', {
+            method: 'POST',
+            body: formData,
+            mode: 'cors'
+        })
+        .then(response => response.json())
+        .then(data => {
+            resolve(data)
+    })
+        .catch((error) => {
+            reject(error);
+
+        });
+    })
+
+}

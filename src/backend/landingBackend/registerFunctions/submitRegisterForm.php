@@ -11,7 +11,6 @@ require_once '../verification/checkIfExisting.php';
 require_once './insertUser.php';
 
 $conn=startConnection();
-// Check connection 
 if ($conn->connect_error) { 
     die("Connection failure: " 
         . $conn->connect_error); 
@@ -33,11 +32,8 @@ if(isset($_POST['username'])){
         $userName=$_POST['username'];
         $userPassword=$_POST['password'];
 
-        $tableName="users";
-        $columnNames=["userName","userEmail","userPassword"];
-        $valuesStrings=[$userName,$userEmail,$userPassword];
 
-        insertUser($tableName,$columnNames,$valuesStrings,$conn);
+        insertUser($userName,$userEmail,$userPassword,$conn);
 
         echo json_encode("Account Created!.");
     } else {

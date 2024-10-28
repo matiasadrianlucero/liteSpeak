@@ -10,13 +10,15 @@ header("Content-Type: application/json");
 
 if(verifyToken($conn,$_POST["loginToken"],$_POST["id"])&& verifyConversation($_POST["id"],$_POST["convId"],$conn)){
     $relationship='none';
-    $stmt = $conn->prepare("UPDATE contacts set relationship=? where id=?"); 
-    $stmt->bind_param("ss",$relationship,$_POST["convId"]);      
-    $stmt->execute();         
+    try{
+        $stmt = $conn->prepare("UPDATE contacts set relationship=? where id=?"); 
+        $stmt->bind_param("ss",$relationship,$_POST["convId"]);      
+        $stmt->execute();         
+    
+        echo json_encode("Contact deleted.");
+    
+    }catch(Exception $e){
+        echo json_encode("CONVERSATION DOESN'T BELONG TO USER.");
 
-    echo json_encode("Contact deleted.");
-
-} else {
-    echo json_encode("DOESN'T BELONG.");
- 
+    }
 }

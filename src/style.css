@@ -2,16 +2,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+:root {
+    --blue: #1e90ff;
+    --white: #EBF7FF;
+    --black: #030303;
+    --lightBlue: #90DDF0;
+    --lavender:#6e6e88;
+    --red: brown;
+  }
 body {
     margin: 0;
-    background-color: #05050A
+    background-color: #ccd8e0
     ;
 
     color: white;
 }
+h1,h2{
+    color:var(--blue);
+    margin-top: 0;
+}
+h1{
+    font-size: 1.8vw;
+}
+h2{
+    font-size: 1.5vw;
+}
+h1,h2,h3,p{
+    font-family: "Montserrat", sans-serif;
+}
+p{
+    
+    color: #030303;
+    font-size: 2vw;
+}
 #landingFormMain{
-    background-color: #05050A
+    background-color: var(--white)
 
 }
 p{
@@ -26,7 +51,7 @@ img{
     flex-basis: 50%;
     padding: .5vw;
     opacity: .3;
-    color: #E6FAFC;
+
 }
 #landingFormMain>form{
     display: flex;
@@ -43,17 +68,21 @@ img{
     flex: 1;
     flex-basis: 50%;
     padding: .5vw;
-    background-color: #030306 ;
+    /* background-color: #030306 ; */
     border: 1px solid #000000;
     color: white;
-    
+    will-change: transform;
 }
 #landingFormMain>form>input:focus{
-    background-color: black;
+    /* background-color: black; */
     outline: none;
 }
+input {
+    background-color:#adb6bc;
+    
+}
 input:valid{
-    outline: 1px #9CFC97 solid;
+    background-color: #1e90ff;
 }
 input:user-invalid{
     outline: 1PX brown solid;
@@ -66,12 +95,12 @@ input:user-invalid{
     width: 20vw;
     -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.877);
     -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.856);
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.208);
 }
 #userDivDropdown>button{
     padding: .5vw;
-    background-color: #05050A;
-    color: white;
+    background-color: var(--white);
+    color: var(--black);
     outline: none;
     border: none;
     border: 1px solid black;
@@ -110,9 +139,10 @@ input:user-invalid{
     "userDivDropdown userDivDropdown"
     ;
     grid-template-columns: 4vw;
-    -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.877);
+    /* -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.877);
     -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.856);
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808); */
+    border-bottom: 1px solid var(--black);
     padding: 1vw;
     padding-top: 1.5vw;
     padding-bottom: 1.5vw;
@@ -165,16 +195,21 @@ margin-right: 3vw;
 box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
 padding:1vw;
 background-color: #00000048;
+transition: all 1s;
 }
 
 
 #landingUIMain{
     padding: 1vw;
-    flex: 1;
     height: 35%;
-    margin-right: 5vw;
     flex-basis: 35%;
-    
+    transition: all 1s;
+}
+#landingUIMain>div{
+    transition: opacity .5s;
+}
+#landingUIMain input:focus{
+    transform: scale(1.025);
 }
 #buttonsDiv{
     display: flex;
@@ -186,14 +221,22 @@ background-color: #00000048;
     flex: 1;
     background-color: none;
     border: 1px solid black ;
+    color: var(--black) !important;
+
 }
 #landingInputEnter{
-    background-color: #05050A;
-    color: white;
+    /* background-color: #05050A; */
+    color: var(--black);
     border: 1px solid black;
+    transition: all 1s;
 }
 #landingInputEnter:hover{
-    background-color: black;
+    /* background-color: var(--white); */
+    color: var(--black);
+    -webkit-box-shadow: 10px 10px 0px -3px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 0px -3px rgba(0,0,0,1);
+    box-shadow: 10px 10px 0px -3px rgba(0,0,0,1);
+    transform: translate(-.2vw,-.2vw);
 }
 
 #resultsDiv{
@@ -291,7 +334,7 @@ background-color: #00000048;
     justify-content: center;
     backdrop-filter: blur(80px);
     height: 100vh;
-
+    transition: all .3s;
     
 }
 #sideBarDiv{
@@ -299,12 +342,22 @@ background-color: #00000048;
     margin-top: 7vh;
     margin-bottom:7vh;
     /* border: .1px white solid; */
-    background-color: #05050A;
+    background-color: var(--white);
     -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.877);
     -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.856);
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.400);
     border: black 1px solid;
     font-family: "League Spartan", sans-serif;
+    transition: all 1s;
+    animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 #bodyDiv {
     /* border: .5px white solid; */
@@ -314,10 +367,12 @@ background-color: #00000048;
     margin-top: 7vh;
     margin-left: 2vh;
     margin-bottom:7vh;
-    background-color: #05050A;
+    background-color: var(--white);
     -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.877);
 -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.856);
-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.808);
+box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.408);
+transition: all 1s;
+animation: fadeIn 1s;
     }
 .hoverToDropDown{
     padding: 1vw;
@@ -365,11 +420,11 @@ input{
     border: 1px solid #6e6e88;
     transition: 1s all;
     width: 80%;
-    background-color: #030306;
+    /* background-color: #030306; */
     font-size: 1vw;
 }
 #sideBarDiv>div>input::after{
-    background-color: #030306;
+    /* background-color: #030306; */
 }
 #sideBarDiv>div>input:invalid{
     outline: none;
@@ -393,6 +448,7 @@ input{
     padding: 2vw;
     gap: .5vw;
     height: 90%;
+    text-align: center;
 }
 #requestsDiv>div{
     flex: 1;
@@ -410,10 +466,13 @@ input{
 }
 #sentRequestsDiv>div{
     cursor: pointer;
+    transition: all .5s
+    ;
 }  
 #sentRequestsDiv>div:hover{
-    background-color: brown;
-}
+    
+    border: 1px solid var(--red);
+    }
 #requestsDiv p{
     margin: 0;
     font-family: "League Spartan", sans-serif;
@@ -426,12 +485,14 @@ input{
         padding: 1vw;
         grid-template-rows: 1.5vw;
         margin-bottom: .5vw;
-        border: #6e6e88 1px solid;
+        border: #6e6e8869 1px solid;
         grid-template-columns: 3vw;
     height: 10%;
 }
 #requestsDiv h2{
     height: 12%;
+    text-decoration: underline;
+    text-underline-offset: 10px;
 }
 #requestsDiv img{
     border-radius: 50%;
@@ -451,9 +512,29 @@ input{
 
 #recievedButtonsDiv{
     grid-area: contactStatus;
+    display: flex;
+    justify-content: space-around;
+
+    
+}
+#recievedButtonsDiv>button{
+    font-size: .7vw;
+    background-color: var(--lightBlue);
+    border: black 1px solid;
+    transition: all .2s;
+    padding: .5vw;
+}
+#recievedButtonsDiv>button:hover{
+    background-color: black;
+    color: white;
+    -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.75);
+    position: relative;
+    transform: translate(-.1vw,-.1vw);
 }
 #blockedRequestsDiv>div:hover{
-    background-color: #558853;
+    border:  1px solid var(--blue);
 }
 #blockedRequestsDiv>div{
      grid-template-rows: none !important;
@@ -462,26 +543,36 @@ input{
 #configurationUIDiv{
     padding: 1.5vw; 
     height: 100%;
+    text-align: center;
 }
 #configurationUIDiv>div{
     display: flex;
     justify-content: center;
     margin: 1vw;
 }
+#configurationUIDiv>div>p{
+    flex-basis: 25%;
+}
+#configurationUIDiv>div>input{
+    flex-basis: 55%;
+}
+#configurationUIDiv>div>input{
+    flex-basis: 20%;
+}
 #configurationUIDiv button{
-    color: #558853;
-    background-color: none;
+    color: var(--black);
+    
+    border: 1px solid var(--black);
     padding: .3vw;
-    background-color: #030306;
+    background-color: var(--white);
     border: 1px solid #6e6e88;
     cursor: pointer;
-
+    transition: all .5s;
     border-left: none;
 }
 
 #configurationUIDiv button:hover{
-    color: #9CFC97;
-    background-color: #558853;
+    background-color: #1e90ff;
 }
 #configurationUIDiv input {
     border-right: none;
@@ -555,7 +646,8 @@ overflow: auto;
 #contactSendChatDiv img{
     height: 2vw;
     width: 2vw;
-    padding:.3vw
+    padding:.3vw;
+    transition: backround-color 1s;
 }
 #contactSendChatDiv>button{
     background-color: none;
@@ -573,25 +665,24 @@ overflow: auto;
 }
 
 #inputDiv button{
-    color: #558853;
+    color: var(--black);
     background-color: none;
     padding: .5vw;
-    background-color: #030306;
-    border: 1px solid #6e6e88;
+    background-color: var(--white);
+    border: 1px solid var(--black);
     cursor: pointer;
 
     border-left: none;
 }
 #inputDiv button:hover{
     color: #9CFC97;
-    background-color: #558853;
+    /* background-color: #558853; */
 }
 #inputDiv input:valid{
     outline: none;
 }
 #inputDiv input:active{
     outline: none;
-
 }
 #inputDiv input {
     border-right: none;
@@ -600,28 +691,30 @@ overflow: auto;
 .selectedImage{
     filter:hue-rotate(0deg);
     filter: saturate(var(--value, 5));
-    background-color: #000000 !important;
+
     border-radius: 50%;
 }
 .msgDiv{
-    background-color: #030306;
+    background-color: var(--white);
     border-radius: 10px;
     width: 50%;
 padding-left: 1vw;
 padding-right: 1vw;
 padding-bottom: .2vw;
+    animation: fadeIn .3s;
 }
 .chatTime{
     color: #6e6e88;
 }
 #cogImg{
-    height: 1.5vw;
-    width: 1.5vw;
-
+    height: 2vw;
+    width: 2vw;
+    transition: transform .3s;
     padding: .8vw;
+    will-change: transform;
 }
 #cogImg:hover {
-    animation: rotateCog 1s
+    transform: scale(1.3);
 }
 @keyframes rotateCog{
     0%{
@@ -637,7 +730,7 @@ padding-bottom: .2vw;
   }
   
 *::-webkit-scrollbar-thumb { 
-    background-color: #030307;
+    background-color: var(--lightBlue);
     border: 1px solid black;
 
   }
@@ -647,8 +740,8 @@ padding-bottom: .2vw;
   #contactOptionHover>button{
     border-radius: 5px;
     background-color: transparent;
-    color: #6e6e88;
-    border: 2.5px solid #6e6e88;
+    color: var(--blue);
+    border: 2.5px solid var(--blue);
     margin-right: .4vw;
     font-weight: bolder;
     padding: .5vw;
@@ -665,19 +758,20 @@ padding-bottom: .2vw;
   }
   #searchDiv{
     padding: 1vw;
+    text-align: center;
   }
   #searchDiv div{
     display: flex;
     cursor: pointer;
-    width: 50%;
     margin: 1vw;
     padding: .5vw;
     align-items: center;
     transition: 1s all;
+  
   }
   #searchDiv div:hover{
     background-color: #558853;
-
+    border: var(--black) solid 1px ;
   }
   #searchDiv img {
     height: 3vw;
@@ -687,19 +781,21 @@ padding-bottom: .2vw;
   }
   #bodyIntro{
     padding: 1vw;
-    display: flex;
+ 
     gap: 1vw;
-    flex-direction: row;
-    flex-wrap: wrap;
+    
+    text-align: center;
+    height: 100%;
+    width: 100%;
+  }
+  #bodyIntro>div>h3{
+    margin-top: .2vw ;
+    margin-bottom: .2vw ;
   }
   #bodyIntro>div{
     flex-basis: 30%;
   }
-  h1, h2,h3{
-    font-family: "Montserrat", sans-serif;
-    color: #E6FAFC;
-    font-size: 2vw;
-}
+
 button {
 
 font-size: 1vw;
@@ -721,4 +817,15 @@ font-size: 1vw;
 }
 #notificationBodyDiv{
     position: absolute;
+}
+#bodyIntro>h1{
+    color: var(--white);
+    -webkit-text-stroke-width: 1px;
+    font-weight: bolder;
+    font-size: 17vw;
+    -webkit-text-stroke-color: var(--black);
+    margin: 0;
+}
+#friendRequestInput>:invalid{
+    background-color: #6e6e88 !important;
 }

@@ -13,7 +13,7 @@ include_once "./checkIfBlocked.php";
 $conn=startConnection();
 
 if(verifyToken($conn,$_POST["loginToken"],$_POST["id"])){
-
+    try{
         $status="rejected";
         $stmt = $conn->prepare("UPDATE friendrequests set status=? where requestId=?");
         $stmt->bind_param("ss",$status,$_POST["requestId"]);
@@ -21,6 +21,10 @@ if(verifyToken($conn,$_POST["loginToken"],$_POST["id"])){
         $stmt->execute();
         
         echo json_encode("Rejected");
+    }catch(Exception $e){
+        var_dump($e);
+    }
+
 
 } else {
     echo json_encode("ERRO1");

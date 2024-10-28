@@ -1,13 +1,12 @@
 import './style.css';
 
-import { landingUI } from './landing/landingUI';
-import { login } from './landing/login/login';
-import { loggedInUI } from './loggedIn/loggedInUI';
+import { landingUI } from './frontend/landing/landingUI';
+import { login } from './frontend/landing/login/login';
+import { loggedInUI } from './frontend/loggedIn/loggedInUI';
 function index(){
     let result=login()
     if(result){
         loggedInUI()
-        console.log(localStorage.getItem("email"),localStorage.getItem("username"))
     } else {
         landingUI()
     }

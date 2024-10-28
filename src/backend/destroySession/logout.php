@@ -10,14 +10,16 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization');
 $conn=startConnection();
 if(isset($_POST['logout'])){
         $email=$_POST['email'];
-
-        $sanitizedTable = preg_replace('/[^a-zA-Z0-9_]/', '', 'users');
-
-        $stmt = $conn->prepare("UPDATE $sanitizedTable SET loginToken=NULL WHERE userEmail=?");
-        $stmt->bind_param("s",$email);
+        try{
+                $stmt = $conn->prepare("UPDATE users SET loginToken=NULL WHERE userEmail=?");
+                $stmt->bind_param("s",$email);
+                
+                $stmt->execute();
         
-        $stmt->execute();
+                destroySession();
+        } catch(Exception $e){
+                var_dump($e);
+        }
 
-        destroySession();
 }
 ?>

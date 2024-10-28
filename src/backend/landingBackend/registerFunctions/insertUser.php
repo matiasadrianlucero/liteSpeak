@@ -3,20 +3,15 @@
     { 
         session_start(); 
     } 
-function insertUser($tableName,$columnNames,$insertValues,$conn){
-        $sanitizedTable = preg_replace('/[^a-zA-Z0-9_]/', '', $tableName);
-
-        $userName=$columnNames[0];
-        $userEmail=$columnNames[1];
-        $userPassword=$columnNames[2];
-    
-        $hashedPassword=password_hash($insertValues[2], PASSWORD_DEFAULT);
-        
-        $stmt = $conn->prepare("INSERT INTO $sanitizedTable ($userName,$userEmail,$userPassword) VALUES (?,?,?)");
-        $stmt->bind_param("sss",$insertValues[0],$insertValues[1],$hashedPassword);
-        
-        $stmt->execute();
-        //select id to create table
-
+function insertUser($userName,$userEmail,$userPassword,$conn){
+        $hashedPassword=password_hash($userPassword, PASSWORD_DEFAULT);
+        try {
+            $stmt = $conn->prepare("INSERT INTO users (userName,userEmail,userPassword) VALUES (?,?,?)");
+            $stmt->bind_param("sss",$userName,$userEmail,$hashedPassword);
+            
+            $stmt->execute();
+        } catch(Exception $e){
+            var_dump($e);
+        }
 }
 ?>

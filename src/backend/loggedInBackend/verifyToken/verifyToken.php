@@ -3,8 +3,8 @@
 function verifyToken($conn,$token,$id){    
     if($token!=""){
 
-            $stmt = $conn->prepare("SELECT * FROM `users` WHERE `userId` = ?");
-            $stmt->bind_param("s", $id);
+            $stmt = $conn->prepare("SELECT userName FROM users WHERE userId = ? AND loginToken=?");
+            $stmt->bind_param("ss", $id,$token);
             
             $stmt->execute();
             
@@ -18,6 +18,7 @@ function verifyToken($conn,$token,$id){
             }
             
     } else {
+        echo json_encode("LOGINTOKEN DOESN'T MATCH");
         return false;
     }
 

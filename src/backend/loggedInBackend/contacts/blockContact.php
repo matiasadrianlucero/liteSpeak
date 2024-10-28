@@ -9,9 +9,14 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
 if(verifyToken($conn,$_POST["loginToken"],$_POST["id"])&& verifyConversation($_POST["id"],$_POST["convId"],$conn)){
-            $relationship="blocked";
-            $stmt = $conn->prepare("UPDATE `contacts` set `relationship`=?,blockedBy=? where id=?"); 
-            $stmt->bind_param("sss",$relationship,$_POST["id"],$_POST["convId"]);      
-            $stmt->execute(); 
-            echo json_encode("Blocked.");
+    try{
+        $relationship="blocked";
+        $stmt = $conn->prepare("UPDATE `contacts` set `relationship`=?,blockedBy=? where id=?"); 
+        $stmt->bind_param("sss",$relationship,$_POST["id"],$_POST["convId"]);      
+        $stmt->execute(); 
+        echo json_encode("Blocked.");
+    } catch(Exception $e){
+        var_dump($e);
+    }
+
 }

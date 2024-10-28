@@ -16,9 +16,9 @@ if ($conn->connect_error) {
         . $conn->connect_error); 
 }   
     if($_POST["loginToken"]!='' && verifyToken($conn,$_POST["loginToken"],$_POST["id"]) && $_POST["updatePassword"]&& $_POST["verifyPassword"]){
-        $sanitizedTable = preg_replace('/[^a-zA-Z0-9_]/', '', 'users');
+        
     
-        $stmt = $conn->prepare("SELECT userPassword FROM `$sanitizedTable` WHERE `userId` = ?");
+        $stmt = $conn->prepare("SELECT userPassword FROM users WHERE userId = ?");
         $stmt->bind_param("s", $_POST["id"]);
         $stmt->execute();
         $resultSTMT = $stmt->get_result();
@@ -26,10 +26,9 @@ if ($conn->connect_error) {
         $rows = $resultSTMT->fetch_array(MYSQLI_NUM);
     
         if(password_verify($_POST["verifyPassword"], $rows[0])){
-            $sanitizedTable = preg_replace('/[^a-zA-Z0-9_]/', '', 'users');
 
             $hashedPassword=password_hash($_POST["updatePassword"], PASSWORD_DEFAULT);
-            $stmt = $conn->prepare("UPDATE $sanitizedTable SET userPassword=? WHERE userId=?");
+            $stmt = $conn->prepare("UPDATE users SET userPassword=? WHERE userId=?");
             $stmt->bind_param("ss",$hashedPassword,$_POST['id']);
             
             $stmt->execute();
@@ -38,8 +37,6 @@ if ($conn->connect_error) {
 
         }else {
             echo json_encode("Password doesn't match this account");
-    
-            // throw new Exception("Password doesn't match this email address");
         }
 
 
